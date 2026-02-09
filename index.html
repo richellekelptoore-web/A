@@ -4,6 +4,7 @@
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
 <title>Access Blocked</title>
+<meta http-equiv="Cache-Control" content="no-store, no-cache, must-revalidate" />
 <style>
   :root{
     --bg:#071026;
@@ -13,90 +14,23 @@
     --glass: rgba(255,255,255,0.03);
     --font: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
   }
-
   html,body{height:100%;margin:0;font-family:var(--font);background:linear-gradient(180deg,#071026 0%, #0b1220 100%);color:#e6eef6}
-
-  /* full-page center */
   .wrap{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:28px;box-sizing:border-box}
-
-  /* card */
-  .card{
-    width:min(980px,96%);
-    background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
-    border-radius:12px;
-    padding:28px;
-    position:relative;
-    box-shadow:0 20px 60px rgba(0,0,0,0.6);
-    overflow:hidden;
-    border:1px solid rgba(255,255,255,0.03);
-  }
-
-  /* Top centered red banner */
-  .top-banner{
-    position:absolute;
-    left:50%;
-    transform:translateX(-50%);
-    top:-40px;
-    background:linear-gradient(90deg,#ff3b4a,#c91f2f);
-    color:#fff;
-    padding:16px 40px;
-    border-radius:12px;
-    font-weight:900;
-    letter-spacing:1px;
-    font-size:26px;
-    text-transform:uppercase;
-    box-shadow:0 12px 40px rgba(200,30,50,0.25);
-    display:flex;
-    gap:12px;
-    align-items:center;
-    z-index:6;
-  }
-
-  /* layout: middle content */
-  .middle{
-    display:grid;
-    grid-template-columns:1fr 300px;
-    gap:20px;
-    align-items:start;
-  }
-
-  .main{
-    padding-top:6px;
-  }
-
+  .card{width:min(980px,96%);background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));border-radius:12px;padding:28px;position:relative;box-shadow:0 20px 60px rgba(0,0,0,0.6);overflow:hidden;border:1px solid rgba(255,255,255,0.03)}
+  .top-banner{position:absolute;left:50%;transform:translateX(-50%);top:-40px;background:linear-gradient(90deg,#ff3b4a,#c91f2f);color:#fff;padding:14px 36px;border-radius:12px;font-weight:900;letter-spacing:1px;font-size:24px;text-transform:uppercase;box-shadow:0 12px 40px rgba(200,30,50,0.25);display:flex;gap:12px;align-items:center;z-index:6}
+  .layout{display:flex;gap:20px;align-items:flex-start;flex-wrap:wrap}
+  .main{flex:1 1 560px;padding-top:6px}
   .title{font-size:20px;margin:0 0 6px 0;font-weight:800;color:#fff}
-  .subtitle{font-size:16px;margin:0 0 14px 0;color:#ffd7dc;font-weight:700}
-
-  .box{
-    background:linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.00));
-    border-radius:10px;padding:16px;border:1px solid rgba(255,255,255,0.02);
-    color:#dfe9f6;line-height:1.5;font-size:15px;
-  }
-
+  .subtitle{font-size:15px;margin:0 0 12px 0;color:#ffd7dc;font-weight:700}
+  .box{background:linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.00));border-radius:10px;padding:16px;border:1px solid rgba(255,255,255,0.02);color:#dfe9f6;line-height:1.5;font-size:15px}
   .meta{display:flex;gap:10px;flex-wrap:wrap;margin-top:12px}
   .pill{background:var(--glass);color:var(--muted);padding:8px 12px;border-radius:999px;font-size:13px;border:1px solid rgba(255,255,255,0.02)}
-
-  /* right column actions */
-  .side{position:relative}
-  .actions{margin-top:6px;display:flex;flex-direction:column;gap:10px}
-  .btn{
-    display:inline-block;text-decoration:none;text-align:center;padding:10px 14px;border-radius:8px;font-weight:700;
-    color:#071026;background:#ffd7dc;border:0;cursor:pointer;font-size:14px;
-  }
+  .side{width:260px;min-width:220px}
+  .actions{display:flex;flex-direction:column;gap:10px;margin-top:6px}
+  .btn{display:inline-block;text-decoration:none;text-align:center;padding:10px 14px;border-radius:8px;font-weight:700;color:#071026;background:#ffd7dc;border:0;cursor:pointer;font-size:14px}
   .btn.secondary{background:transparent;color:#ffd7dc;border:1px solid rgba(255,255,255,0.06)}
-
-  .small{font-size:12px;color:var(--muted);margin-top:12px}
-
-  /* bottom small text */
-  .bottom{
-    margin-top:18px;font-size:12px;color:var(--muted);text-align:center;
-  }
-
-  /* responsive */
-  @media (max-width:880px){
-    .middle{grid-template-columns:1fr}
-    .top-banner{font-size:18px;padding:12px 20px;top:-30px}
-  }
+  .bottom{margin-top:18px;font-size:12px;color:var(--muted);text-align:center}
+  @media (max-width:880px){.side{width:100%}.top-banner{font-size:18px;padding:12px 20px;top:-30px}}
 </style>
 </head>
 <body>
@@ -104,23 +38,23 @@
     <div class="card" role="alert" aria-live="assertive">
       <div class="top-banner" aria-hidden="true">Said Content Blocked</div>
 
-      <div class="middle">
+      <div class="layout">
         <div class="main">
           <h1 id="blocked-heading" class="title">Access to this site is blocked</h1>
           <div class="subtitle">You were redirected to this notice</div>
 
           <div class="box" id="message">
-            <p><strong>Dear users.</strong> The site you attempted to visit has been blocked by the network filter. If you think this is incorrect, contact the administrator for review.</p>
+            <p><strong>Dear users.</strong> The site you attempted to visit has been blocked by the network filter. If you believe this is an error, contact the administrator for review.</p>
 
             <p style="margin-top:10px"><strong>Attempted site</strong>: <span id="site" style="color:#ffd7dc;font-weight:800">[attempted URL]</span><br/>
             <strong>Reason</strong>: <span id="reason" style="color:#ffd7dc;font-weight:800">[filter name]</span></p>
 
-            <p style="margin-top:10px;color:#dfe9f6">Do not use this site for unauthorized activities. Focus on approved tasks. Thank you.</p>
+            <p style="margin-top:10px;color:#dfe9f6">Please do not use this site for unauthorized activities. Focus on approved tasks. Thank you.</p>
 
             <div class="meta" aria-hidden="true">
-              <div class="pill">Filter: Network</div>
-              <div class="pill">Action: Contact Admin</div>
-              <div class="pill" id="time-pill">Time: <span id="time" style="color:#ffd7dc;font-weight:700">--</span></div>
+              <div class="pill">Filter Network</div>
+              <div class="pill">Action Contact Admin</div>
+              <div class="pill" id="time-pill">Time <span id="time" style="color:#ffd7dc;font-weight:700">--</span></div>
             </div>
           </div>
         </div>
@@ -131,7 +65,7 @@
             <a class="btn secondary" href="#" id="contactBtn">Contact Administrator</a>
           </div>
 
-          <div class="small">If you are an administrator and need to override this block, use the admin console.</div>
+          <div style="margin-top:12px;font-size:13px;color:var(--muted)">If you are an administrator and need to override this block, use the admin console.</div>
         </aside>
       </div>
 
@@ -139,33 +73,32 @@
     </div>
   </div>
 
-  <script>
-    (function(){
-      const params = new URLSearchParams(location.search);
-      const attempted = params.get('url') || params.get('site') || document.referrer || '[attempted URL]';
-      const reason = params.get('reason') || '[filter name]';
-      const siteEl = document.getElementById('site');
-      const reasonEl = document.getElementById('reason');
-      const timeEl = document.getElementById('time');
-      const now = new Date();
-      timeEl.textContent = now.toLocaleString();
+<script>
+(function(){
+  const params = new URLSearchParams(location.search);
+  const attempted = params.get('url') || params.get('site') || document.referrer || '[attempted URL]';
+  const reason = params.get('reason') || '[filter name]';
+  const siteEl = document.getElementById('site');
+  const reasonEl = document.getElementById('reason');
+  const timeEl = document.getElementById('time');
+  const now = new Date();
+  timeEl.textContent = now.toLocaleString();
 
-      siteEl.textContent = attempted;
-      reasonEl.textContent = reason;
+  siteEl.textContent = attempted;
+  reasonEl.textContent = reason;
 
-      document.getElementById('backBtn').addEventListener('click', function(e){
-        e.preventDefault();
-        if (history.length > 1) history.back();
-        else location.href = '/';
-      });
+  document.getElementById('backBtn').addEventListener('click', function(e){
+    e.preventDefault();
+    if (history.length > 1) history.back(); else location.href = '/';
+  });
 
-      document.getElementById('contactBtn').addEventListener('click', function(e){
-        e.preventDefault();
-        const subject = encodeURIComponent('Blocked site review: ' + attempted);
-        const body = encodeURIComponent('I attempted to access: ' + attempted + '\\nReason shown: ' + reason + '\\nTime: ' + now.toLocaleString() + '\\n\\nPlease review.');
-        location.href = 'mailto:admin@example.com?subject=' + subject + '&body=' + body;
-      });
-    })();
-  </script>
+  document.getElementById('contactBtn').addEventListener('click', function(e){
+    e.preventDefault();
+    const subject = encodeURIComponent('Blocked site review: ' + attempted);
+    const body = encodeURIComponent('Attempted: ' + attempted + '\\nReason: ' + reason + '\\nTime: ' + now.toLocaleString());
+    location.href = 'mailto:admin@example.com?subject=' + subject + '&body=' + body;
+  });
+})();
+</script>
 </body>
 </html>
